@@ -1,0 +1,26 @@
+
+Partie Frontend :
+creation de la partie client (frontend) sous visual et installation de rect comme framework
+- npx create-react-app frontend
+installation de node sass et react router
+- npm i -save node-sass react-router-dom
+installation de la librairie axios permettant de faire des requetes vers la base de données
+- npm i -s axios
+installation des env
+- npm i -s dotenv
+
+pour demarrer :
+cd frontend
+npm start
+
+Partie Backend:
+creation du fichier de demarrage :
+- npm init - y
+import express :
+- npm install -- save express nodemon dotenv
+creation du fichier pivaut :
+- server.js
+- changement dans le fichier package.json - partie script : "start": "nodemon server.js"
+creation du fichier des variables d'environnement
+
+
