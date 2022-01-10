@@ -1,0 +1,55 @@
+Inistructions à suivre pour la création de la base de données :
+
+DROP DATABASE IF EXISTS Groupomania;
+
+CREATE DATABASE Groupomania;
+
+CREATE USER 'adminP7' IDENTIFIED BY 'adminP7';
+GRANT ALL ON Groupomania.* TO 'adminP7';
+
+USE Groupomania;
+
+CREATE TABLE IF NOT EXISTS User (
+	userID int(11) NOT NULL AUTO_INCREMENT,
+	pseudo VARCHAR(60) NOT NULL UNIQUE,
+	email VARCHAR(60) NOT NULL UNIQUE,
+	password VARCHAR(100) NOT NULL UNIQUE,
+	picture VARCHAR(255) NOT NULL DEFAULT 'http://localhost:3000/images/avatarDefault.jpg',
+	role varchar(255) DEFAULT 'admin',
+	dateCreation DATETIME NOT NULL,
+	dateModification DATETIME NOT NULL,
+	PRIMARY KEY (userID)
+);
+
+
+CREATE TABLE IF NOT EXISTS Post  (
+	postID INTEGER NOT NULL AUTO_INCREMENT,
+	userID INTEGER,
+	content TEXT,
+	picture VARCHAR(255),
+	likes INTEGER NOT NULL,
+	dateCreation DATETIME NOT NULL,
+	dateModification DATETIME NOT NULL,
+	PRIMARY KEY (postID)
+);
+
+
+CREATE TABLE IF NOT EXISTS Comment(
+	commentID INTEGER NOT NULL AUTO_INCREMENT,
+	userID INTEGER,
+	postID INTEGER,
+	comment VARCHAR(255),
+	likes BOOLEAN DEFAULT FALSE,
+	dateCreation DATETIME NOT NULL,
+	dateModification DATETIME NOT NULL,
+	PRIMARY KEY (commentID)
+);
+
+
+ALTER TABLE Post  
+ADD FOREIGN KEY (userID) REFERENCES User (userID)
+ON DELETE CASCADE;
+
+ALTER TABLE Comment
+ADD FOREIGN KEY (userID) REFERENCES User (userID) ON DELETE CASCADE,
+ADD FOREIGN KEY (postID) REFERENCES Post (postID) ON DELETE CASCADE;
