@@ -8,7 +8,6 @@ const auth = require('../middleware/auth'); // pour importer le middleware auth
 const userCtrl = require('../controllers/user'); // pour importer les controleurs
 const authCtrl = require('../controllers/auth'); // pour importer les controleurs
 
-
 //pour créer un nouveau user 
 router.post('/auth/signup', authCtrl.signup);
 //pour connecter le user 

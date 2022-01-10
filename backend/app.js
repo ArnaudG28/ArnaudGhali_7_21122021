@@ -9,6 +9,7 @@ const express = require('express');
 const userRoutes = require('./routes/user'); // pour importer notre router user
 const postRoutes = require('./routes/post'); // pour importer notre router user
 const commentRoutes = require('./routes/comment'); // pour importer notre router user
+const router = express.Router(); // pour créer un routeur Express
 
 const db = require("./models");
 db.sequelize.sync()
